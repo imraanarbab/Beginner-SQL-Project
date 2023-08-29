@@ -6,14 +6,14 @@ SELECT * FROM MovieInfo
 -- SELECT * FROM MovieInfo ORDER BY rating DESC
 
 -- 1st task: Find the actors that appear in the most movies in the dataset
- SELECT actor, COUNT(*) as TotalMovies
+ SELECT actor, COUNT(*) as TotalMovies --Take the total count of movies of each actor
  FROM (
   SELECT mainactor as actor FROM MovieInfo
-  UNION ALL
+  UNION ALL --Use Union all to combine mainactor, and mainctor2 columns into a single column
    SELECT mainactor2 as actor FROM MovieInfo
-) AS AllActors
-GROUP BY actor
-ORDER BY TotalMovies DESC;
+) AS AllActors --Calculates the total count of movies for each actor combination.
+GROUP BY actor --Group results by actor combinations
+ORDER BY TotalMovies DESC; --Sorted in descending order
 
 --2nd task: Find the top rated movies in a specific genre
 SELECT genre, movietitle, rating from MOVIEINFO WHERE genre = 'Drama' ORDER BY rating DESC 
